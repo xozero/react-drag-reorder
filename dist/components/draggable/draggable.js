@@ -60,7 +60,8 @@ class DraggableComponent extends Component {
       });
     });
 
-    _defineProperty(this, "dragDrop", () => {
+    _defineProperty(this, "dragDrop", e => {
+      e.preventDefault();
       this.insertElementBefore();
     });
   }
@@ -73,7 +74,7 @@ class DraggableComponent extends Component {
         dragStart: () => this.dragStart(i),
         dragEnter: () => this.dragEnter(i),
         dragEnd: this.dragDrop,
-        key: i
+        key: this.state.divs[i].key
       }, this.state.divs[i]));
     }
 
